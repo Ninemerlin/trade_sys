@@ -14,6 +14,7 @@
         <module>eureka</module>
         <module>gateway</module>
         <module>test-service</module>
+        <module>user-service</module>
     </modules>
     <groupId>com.dlut</groupId>
     <artifactId>E-Mall</artifactId>

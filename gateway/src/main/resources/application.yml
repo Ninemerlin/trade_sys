@@ -11,6 +11,12 @@ spring:
           uri: lb://test-service
           predicates:
             - Path=/test/**
+
+        - id: user-service
+          uri: lb://user-service
+          predicates:
+            - Path=/user/**
+
 #      default-filters:
 #        - Authentication=1  # AuthenticationGatewayFilter Priority
 
@@ -23,8 +29,9 @@ em:
   auth:
     excludePaths:
       - /test/service0/**
+      - /user/login
     includePaths:
-      - /test/service1/**
+      - /**
 
 eureka:
   client:

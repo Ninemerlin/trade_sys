@@ -37,7 +37,7 @@ public class AuthenticationGlobalFilter implements GlobalFilter, Ordered {
         }
         // 2.获取token
         String token = null;
-        List<String> headers = request.getHeaders().get("authorization");
+        List<String> headers = request.getHeaders().get("authorization"); // token
         if(headers != null && headers.size() > 0) {
             token = headers.get(0);
         }
