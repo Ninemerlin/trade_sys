@@ -11,15 +11,15 @@ import reactor.core.publisher.Mono;
 
 import java.util.List;
 
-//Filter方式2 GatewayFilter
-@Component
+// Filter方式2 GatewayFilter (项目不用这个)
+// @Component
 public class AuthenticationGatewayFilterFactory extends AbstractGatewayFilterFactory<AuthenticationGatewayFilterFactory.Config> {
     @Override
     public GatewayFilter apply(Config config) {
         return new OrderedGatewayFilter(new GatewayFilter() {
             @Override
             public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
-                System.out.println("[AuthenticationGatewayFilter] Priority: " + config.getPriority());
+                System.out.println("[(Useless)AuthenticationGatewayFilter] Priority: " + config.getPriority());
                 return chain.filter(exchange);
             }
         }, config.getPriority());
