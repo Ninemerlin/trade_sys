@@ -6,12 +6,23 @@ spring:
     name: gateway
   cloud:
     gateway:
-      mvc:
-        routes:
+      routes:
           - id: test-service
             uri: lb://test-service
             predicates:
               - Path=/test/**
+      default-filters:
+        - Authentication=1  # AuthenticationGatewayFilter Priority
+
+em:
+  jwt:
+    location: classpath:JwtSignKey.jks
+    alias: emall
+    password: emallpwd
+    tokenTTL: 30m
+  auth:
+    excludePaths:
+      - /test/**
 
 eureka:
   client:
