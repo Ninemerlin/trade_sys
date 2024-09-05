@@ -10,6 +10,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <modules>
+        <module>api</module>
         <module>common</module>
         <module>eureka</module>
         <module>gateway</module>

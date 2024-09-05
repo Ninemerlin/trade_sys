@@ -21,7 +21,6 @@ import java.util.List;
 @Component
 @RequiredArgsConstructor
 public class AuthenticationGlobalFilter implements GlobalFilter, Ordered {
-
     private final AuthProperties authProperties;
     private final JwtTool jwtTool;
     private final AntPathMatcher antPathMatcher = new AntPathMatcher();

@@ -5,8 +5,6 @@ import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Enumeration;
-
 @RequestMapping("/test")
 @RestController
 @RequiredArgsConstructor

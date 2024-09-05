@@ -15,7 +15,7 @@ class UserController {
     private final UserService userService;
 
     @PostMapping("/login")
-    public Result test(@RequestBody User user){
+    public Result loginCheck(@RequestBody User user){
         System.out.println("[UserService] getUserByIdAndPassword : " + user);
         Result result = userService.loginCheck(user);
         if(result.getCode() == 200){
@@ -24,5 +24,6 @@ class UserController {
         }
         System.out.println("[UserService] getUserByIdAndPassword Fail");
         return result;
+//        return Result.success().addData("user",new User().setUsername("jack").setPassword("$2a$10$6ptTq3V9XfaJmFYwYT2W9ud377BUkEWk.whf.iQ.0sX5F.L497rAC"));
     }
 }
