@@ -1,0 +1,23 @@
+server:
+  port: 8082
+
+spring:
+  application:
+    name: user-service
+  datasource:
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/emall
+
+em:
+  jwt:
+    location: classpath:JwtSignKey.jks
+    alias: signkey
+    password: 8A6284DB-FED3-2DEF-52C4-AFF877D27D4B
+    tokenTTL: 30m
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
