@@ -1,0 +1,39 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: gateway
+  cloud:
+    gateway:
+      routes:
+        - id: test-service
+          uri: lb://test-service
+          predicates:
+            - Path=/test/**
+
+        - id: user-service
+          uri: lb://user-service
+          predicates:
+            - Path=/user/**
+
+#      default-filters:
+#        - Authentication=1  # AuthenticationGatewayFilter Priority
+
+em:
+  jwt:
+    location: classpath:JwtSignKey.jks
+    alias: signkey
+    password: 8A6284DB-FED3-2DEF-52C4-AFF877D27D4B
+    tokenTTL: 30m
+  auth:
+    excludePaths:
+      - /test/service0/**
+      - /user/login
+    includePaths:
+      - /**
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
