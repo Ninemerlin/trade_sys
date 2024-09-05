@@ -15,7 +15,7 @@ class UserController {
     private final UserService userService;
 
     @PostMapping("/login")
-    public Result loginCheck(@RequestBody User user){
+    public Result test(@RequestBody User user){
         System.out.println("[UserService] getUserByIdAndPassword : " + user);
         Result result = userService.loginCheck(user);
         if(result.getCode() == 200){

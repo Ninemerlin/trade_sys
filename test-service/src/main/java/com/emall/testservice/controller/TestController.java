@@ -15,13 +15,11 @@ public class TestController {
 
     @GetMapping("/service0")
     public String service0(){
-        //User user = BeanUtils.copyProperties(userDTO, User.class);
         return testService.service();
     }
 
     @GetMapping("/service1")
     public String service1(){
-        //User user = BeanUtils.copyProperties(userDTO, User.class);
         return testService.service();
     }
 }
