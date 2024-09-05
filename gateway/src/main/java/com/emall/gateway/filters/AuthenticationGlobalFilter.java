@@ -68,5 +68,5 @@ public class AuthenticationGlobalFilter implements GlobalFilter, Ordered {
     @Override
     public int getOrder() { // Filter优先级
         return 0;
-    }
+    } // Filter优先级
 }
