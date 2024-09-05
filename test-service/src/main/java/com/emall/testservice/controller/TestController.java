@@ -1,25 +1,25 @@
 package com.emall.testservice.controller;
 
 import com.emall.testservice.service.TestService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import jakarta.servlet.http.HttpServletRequest;
+import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Enumeration;
 
 @RequestMapping("/test")
 @RestController
+@RequiredArgsConstructor
 public class TestController {
-    @Autowired
-    TestService testService;
+    private final TestService testService;
 
     @GetMapping("/service0")
-    public String service0(){
-        return testService.service();
+    public String service0(HttpServletRequest request) {
+        return testService.service() + " ID: " + request.getHeader("user-info");
     }
 
     @GetMapping("/service1")
-    public String service1(){
-        return testService.service();
+    public String service1(HttpServletRequest request) {
+        return testService.service() + " ID: " + request.getHeader("user-info");
     }
 }

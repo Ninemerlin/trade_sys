@@ -52,8 +52,13 @@ public class AuthenticationGlobalFilter implements GlobalFilter, Ordered {
             return response.setComplete();
         }
         System.out.println(request.getURI() + " : 验证成功(userId: " + userId + ").");
-        // 4.放行
-        return chain.filter(exchange);
+        // 4.通过header传递用户id
+        String uid = userId.toString();
+        ServerHttpRequest newRequest = request.mutate().header("user-info", uid).build();
+        ServerWebExchange exchange_new = exchange.mutate().request(newRequest).build();
+        System.out.println(exchange_new.getRequest().getHeaders());
+        // 5.放行
+        return chain.filter(exchange_new);
     }
 
     private boolean isExclude(String path) {
