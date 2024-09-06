@@ -2,7 +2,7 @@ package com.emall.userservice.controller;
 
 import com.emall.common.domain.pojo.Result;
 import com.emall.common.domain.pojo.User;
-import com.emall.common.utils.WebUtil;
+import com.emall.common.utils.UserContext;
 import com.emall.userservice.service.UserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -33,7 +33,7 @@ class UserController {
         System.out.println("[UserService] Regist : " + user);
         Result result = userService.regist(user);
         if(result.getCode() == 200){
-            System.out.println("[UserService] Regist Succeeded : " + result.getData().get("token"));
+            System.out.println("[UserService] Regist Succeeded.");
             return result;
         }
         System.out.println("[UserService] Regist Failed.");
@@ -42,7 +42,7 @@ class UserController {
 
     @DeleteMapping("/cancel")
     public Result cancel(){
-        Long userId = WebUtil.getLoginId();
+        Long userId = UserContext.getUser(); // WebUtil.getLoginId();
         System.out.println("[UserService] CancelUser : " + userId);
         Result result = userService.cancel(userId);
         if(result.getCode() == 200){

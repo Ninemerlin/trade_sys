@@ -51,7 +51,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public Result regist(User user) {
         if(userMapper.getUserByUsername(user.getUsername()) != null) {
-            return Result.success().addMsg("用户已存在.");
+            return Result.fail().addMsg("用户已存在.");
         }
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         user.setStatus(UserStatus.NORMAL);
