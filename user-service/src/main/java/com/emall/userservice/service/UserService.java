@@ -4,7 +4,7 @@ import com.emall.common.domain.pojo.Result;
 import com.emall.common.domain.pojo.User;
 
 public interface UserService {
-    Result loginCheck(User user);
+    Result login(User user);
 
     Result regist(User user);
 

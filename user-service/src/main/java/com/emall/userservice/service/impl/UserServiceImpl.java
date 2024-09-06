@@ -22,7 +22,7 @@ public class UserServiceImpl implements UserService {
     private final UserMapper userMapper;
 
     @Override
-    public Result loginCheck(User user) {
+    public Result login(User user) {
         // 1.查询用户
         String username = user.getUsername();
         String password = user.getPassword();
@@ -50,6 +50,9 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public Result regist(User user) {
+        if(userMapper.getUserByUsername(user.getUsername()) != null) {
+            return Result.success().addMsg("用户已存在.");
+        }
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         user.setStatus(UserStatus.NORMAL);
         user.setPhone(null);
