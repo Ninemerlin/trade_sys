@@ -17,7 +17,7 @@ public class UserInfoInterceptor implements HandlerInterceptor {
 //          <version>0.0.1-SNAPSHOT</version>
 //          <scope>compile</scope>
 //     </dependency>
-//     2.yaml添加配置
+//     2.yaml添加配置(或者从配置中心拉取base-service-config, 里面也有这个)
 //     userInfoInterceptor:
 //         enable: true
 

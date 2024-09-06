@@ -16,6 +16,7 @@
         <module>gateway</module>
         <module>test-service</module>
         <module>user-service</module>
+        <module>config</module>
     </modules>
     <groupId>com.dlut</groupId>
     <artifactId>E-Mall</artifactId>
