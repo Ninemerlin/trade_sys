@@ -15,7 +15,7 @@ public class UserInfoInterceptor implements HandlerInterceptor { // 进入微服
         // 2.判断是否获取用户
         if(userId != null) {
             UserContext.setUser(Long.valueOf(userId));
-            System.out.println("[UserInfoInterceptor] UserContext SetUserId :" + userId);
+            System.out.println("[UserInfoInterceptor] UserContext GetUserId From Header :" + userId);
         }
         return true;
     }

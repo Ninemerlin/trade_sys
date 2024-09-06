@@ -1,4 +1,4 @@
-package com.emall.api.client;
+package com.emall.api.clients;
 
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;

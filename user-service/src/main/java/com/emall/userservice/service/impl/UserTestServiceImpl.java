@@ -1,6 +1,6 @@
 package com.emall.userservice.service.impl;
 
-import com.emall.api.client.TestClient;
+import com.emall.api.clients.TestClient;
 import com.emall.common.domain.pojo.Result;
 import com.emall.userservice.mapper.UserMapper;
 import com.emall.userservice.service.UserTestService;
