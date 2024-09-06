@@ -5,4 +5,8 @@ import com.emall.common.domain.pojo.User;
 
 public interface UserService {
     Result loginCheck(User user);
+
+    Result regist(User user);
+
+    Result cancel(Long userId);
 }

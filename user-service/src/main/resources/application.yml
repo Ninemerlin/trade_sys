@@ -15,7 +15,7 @@ em:
     location: classpath:JwtSignKey.jks
     alias: signkey
     password: 8A6284DB-FED3-2DEF-52C4-AFF877D27D4B
-    tokenTTL: 30m
+    tokenTTL: 24h
 
 eureka:
   client:

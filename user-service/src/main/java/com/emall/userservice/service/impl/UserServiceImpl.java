@@ -11,6 +11,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+import java.time.LocalDateTime;
+
 @Service
 @RequiredArgsConstructor
 public class UserServiceImpl implements UserService {
@@ -24,22 +26,48 @@ public class UserServiceImpl implements UserService {
         // 1.查询用户
         String username = user.getUsername();
         String password = user.getPassword();
-        User u = userMapper.loginCheck(username);
+        User u = userMapper.getUserByUsername(username);
+        if(u == null) {
+            return Result.fail().addMsg("用户不存在.");
+        }
         // 2.校验是否禁用
         if (user.getStatus() == UserStatus.FROZEN) {
-            // throw new ForbiddenException("用户被冻结");
-            return Result.fail().addMsg("用户被冻结");
+            // throw new ForbiddenException("用户被冻结.");
+            return Result.fail().addMsg("用户被冻结.");
         }
         // 3.校验密码
         if (!passwordEncoder.matches(password, u.getPassword())) {
             System.out.println(password);
             System.out.println(user.getPassword());
-            // throw new BadRequestException("用户名或密码错误");
-            return Result.fail().addMsg("用户名或密码错误");
+            // throw new BadRequestException("密码错误.");
+            return Result.fail().addMsg("密码错误.");
         }
         // 4.生成TOKEN
         String token = jwtTool.createToken(u.getId(), jwtProperties.getTokenTTL());
         u.setPassword(null);
         return Result.success().addData("token", token).addData("user", u);
+    }
+
+    @Override
+    public Result regist(User user) {
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        user.setStatus(UserStatus.NORMAL);
+        user.setPhone(null);
+        user.setCreateTime(LocalDateTime.now());
+        user.setUpdateTime(LocalDateTime.now());
+        user.setBalance(0);
+        if(userMapper.addUser(user)) {
+            return Result.success().addMsg("用户 "+ user.getUsername() + " 注册成功.");
+        }
+        return Result.fail().addMsg("用户 "+ user.getUsername() + " 注册失败.");
+    }
+
+    @Override
+    public Result cancel(Long userId) {
+        if(userMapper.cancel(userId)) {
+            // 关联数据库的信息删除 暂空
+            return Result.success().addMsg("注销成功.");
+        }
+        return Result.fail().addMsg("注销失败.");
     }
 }
