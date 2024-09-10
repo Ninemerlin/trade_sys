@@ -3,6 +3,9 @@ spring:
     name: user-service
 
   cloud:
+    bus:
+      enabled: true
+
     # 从配置中心拉取配置,若配置中心的配置有更改需重启配置中心
     # 使用bootstrap.yml需引入Cloud Bootstrap依赖
     config:
@@ -12,3 +15,10 @@ spring:
       discovery:
         enabled: true
         service-id: config-server
+
+##配置热更新(暂弃)
+#management: # 暴露触发消息总线的地址
+#  endpoints:
+#    web:
+#      exposure:
+#        include: "bus-refresh"
