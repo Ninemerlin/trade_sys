@@ -7,3 +7,10 @@ em:
     alias: signkey
     password: 8A6284DB-FED3-2DEF-52C4-AFF877D27D4B
     tokenTTL: 24h
+
+spring:
+  cloud:
+    sentinel:
+      transport:
+        dashboard: localhost:8090
+      enabled: true
