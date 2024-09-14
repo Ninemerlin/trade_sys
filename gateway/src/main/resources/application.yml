@@ -4,6 +4,7 @@ server:
 spring:
   application:
     name: gateway
+
   cloud:
     gateway:
       routes:
@@ -30,6 +31,7 @@ em:
     excludePaths:
       - /test/service0/**
       - /user/login
+      - /user/regist
     includePaths:
       - /**
 

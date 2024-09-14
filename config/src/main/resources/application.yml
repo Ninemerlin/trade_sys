@@ -1,0 +1,35 @@
+server:
+  port: 8888
+
+spring:
+  application:
+    name: config-server
+  profiles:
+    active: native
+  cloud:
+    config:
+      server:
+        native:
+          searchLocations: classpath:/config # /resources/config
+#        git:
+#          search-paths: config
+#          uri:https://github.com/Zincoid/E-Mall-Config.git
+
+
+## 配置热更新(暂弃)
+#  rabbitmq:
+#    host: localhost
+#    port: 5672
+#    username: guest
+#    password: guest
+#
+#management: # 暴露触发消息总线的地址
+#  endpoints:
+#    web:
+#      exposure:
+#        include: "bus-refresh"
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka

@@ -2,15 +2,13 @@ server:
   port: 8081
 
 spring:
-  application:
-    name: test-service
-  datasource:
-    username: root
-    password: root
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/emall
+  cloud:
+    sentinel:
+      transport:
+        port: 8719
+        dashboard: localhost:8090
+      enabled: true
 
-eureka:
-  client:
-    service-url:
-      defaultZone: http://localhost:8761/eureka
+feign:
+  sentinel:
+    enabled: true
