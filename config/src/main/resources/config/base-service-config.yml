@@ -10,9 +10,8 @@ spring:
   cloud:
     sentinel:
       transport:
-        port: 8719
+#        port: 8719
         dashboard: localhost:8090
-      enabled: true
 
 feign:
   sentinel:
