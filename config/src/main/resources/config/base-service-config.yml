@@ -5,3 +5,17 @@ eureka:
 
 userInfoInterceptor:
   enable: true
+
+spring:
+  cloud:
+    sentinel:
+      transport:
+        port: 8719
+        dashboard: localhost:8090
+
+    openfeign:
+      lazy-attributes-resolution: true
+
+feign:
+  sentinel:
+    enabled: true
